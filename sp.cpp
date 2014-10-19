@@ -1,0 +1,44 @@
+#include<iostream>
+#include<cstdio>
+#include<cstdlib>
+int main()
+{
+
+ int test,k,i,j,r,n,x,y,mila;
+scanf("%d",&test);
+
+char s1[10],s2[10];
+for(k=1;k<=test;k++)
+{ 
+  scanf("%d%d",&n,&r);//here n is th e number of the persons
+   
+   int hash[1002][3]={0};
+
+     mila=0;
+   for(i=0;i<r;i++)
+   {
+      scanf("%s%s",s1,s2);
+       if(mila==0)
+        {
+        x=atoi(s1);
+        y=atoi(s2);
+       hash[x][0]=2;//matalb x left side me hai
+       hash[y][1]=2;//matlab y right side ma hai
+
+       if(hash[x][1]==2 || hash[y][0]==2)
+       mila=1;
+       }
+   }
+    
+   
+
+   if(mila==0)
+    printf("Scenario #%d: spying\n",k);
+   else 
+    printf("Scenario #%d: spied\n",k); 
+    
+}
+
+return 0;
+}
+       

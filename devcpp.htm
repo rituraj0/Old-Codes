@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dev-C++ Help</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="style.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<P>Welcome to Orwell Dev-C++'s severely neglected help file! You can start navigating it from here.</P>
+<P><h3>User interface documentation</h3></P><hr/>
+<ul>
+	<li>Dialog Windows
+		<ul>
+			<li>Profile Analysis
+				<ul>
+					<li><a href=".\Dialog Windows\Profile Analysis\Flat Output.htm">Flat Output</a></li>
+					<li><a href=".\Dialog Windows\Profile Analysis\Call Graph.htm">Call Graph</a></li>
+					<li><a href=".\Dialog Windows\Profile Analysis\Profiling Options.htm">Profiling Options</a></li>
+				</ul>
+			</li>
+			<li>Project Options
+				<ul>
+					<li><a href=".\Dialog Windows\Project Options\General.htm">General</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Files.htm">Files</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Compiler.htm">Compiler</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Parameters.htm">Parameters</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Directories.htm">Directories</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Build Options.htm">Build Options</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Makefile.htm">Makefile</a></li>
+					<li><a href=".\Dialog Windows\Project Options\Version Info.htm">Version Info</a></li>
+				</ul>
+			</li>			
+		</ul>
+	</li>
+	<li>Start Menu items
+		<ul>
+			<li><a href=".\Start Menu Items\File.htm">File</a></li>
+			<li><a href=".\Start Menu Items\Edit.htm">Edit</a></li>
+			<li><a href=".\Start Menu Items\Search.htm">Search</a></li>
+			<li><a href=".\Start Menu Items\View.htm">View</a></li>
+			<li><a href=".\Start Menu Items\Project.htm">Project</a></li>
+			<!--<li><a href=".\Start Menu Items\Execute.htm">Execute</a></li>
+			<li><a href=".\Start Menu Items\Debug.htm">Debug</a></li>-->
+		</ul>
+	</li>
+</ul>
+<P><h3>Frequently Asked Questions</h3></P><hr/>
+
+<h4>Q: Can I add any MinGW based compiler?</h4>
+<p>A: You can of course. If you want to use a 32bit MinGW compiler without having to set paths, you can put it in a 'MinGW32' folder next to Dev-C++ and force a first start by removing your configuration files. This folder will be recogized and paths will be automatically set. 'MinGW64' is the auto-detect folder for TDM-GCC x64 installs. One can also easily install compilers anywhere and manually create a profile in Tools >> Compiler Options >> Add. You must then set manually Directories, Programs and optionally Settings.</p>
+
+<h4>Q: Can I disable these annoying mouseover popups?</h4>
+<p>A: Sure. You can toggle them in Tools >> Editor Options >> Show Editor Hints.</p>
+
+<h4>Q: What are the differences between the portable and setup versions?</h4>
+<p>A: There aren't that many differences at all. I've decided to support relative paths for (example for) compilers in all versions: a macro called %path% is used for paths containing the location of devcpp.exe. So using paths in Dev-C++'s folder will make these paths use this flexible macro. The trick of the portable version (devcppPortable.exe) is that it tells Dev-C++ to put its settings in a location called .\config by using the supported -c flag (i.e.: -c ".\config\"). This will preserve settings when moving an install around. Of course, the portable version is smaller thanks to 7-Zip's LZMA2 (the installer uses LZMA1). Also, you don't have to download the setup overhead.</p>
+
+<h4>Q: I'm using the TDM-GCC x64 version and cache creation is taking longer than forever. What can I do?</h4>
+<p>A: Yes, it's taking very long, thanks to the huge amount of headers supplied by TDM-GCC x64. Of course, no single programmer will ever use them all. I suggest selecting the custom caching options or navigating to Tools >> Editor Options >> Class Browsing >> Completion. Add the headers <b>you</b> often use. You don't have to add everything manually fortunately. Adding windows.h for example will include the whole massive heap of Microsoft stuff referenced inside that file.</p>
+
+<h4>Q: I want to compile for 32-bit with my TDM-GCC x64 install. How do I do that?</h4>
+<p>A: First off, you need to pass '-m32' to the compiler. To do that, go to Tools >> Compiler Options >> Settings >> Code Generation and set pointer width to '32bit'. This sets the global option. Projects override this option, so for every project already made, go to Project >> Project Options >> Compiler >> Code Generation and set 32bit here too. As a last step, you need to tell the compiler to use the 32bit libraries. Go to Tools >> Compiler Options >> Directories >> Libraries. Edit the 'lib' path to point to 'lib32'. That's it. You're done.</p>
+
+
+<h4>Q: I don't know if I should download the 32-bit or 64-bit version. Please point me to the differences!</h4>
+<p>A: Simply put, the 64-bit version can do everything the 32-bit version can, and more. Dev-C++ itself is compiled for 32-bit systems and can always be used on 32-bit systems. The compiler itself can for the same reason also be used on both architectures. The 64-bit compiler (TDM-GCC 4.6.1) can create both 32-bit and 64-bit (the latter one is default) executables using -m32 and -m64 (see Compiler Options >> Settings >> Code Generation). Of course, you can't run executables created with m64 on a 32-bit system. The 64-bit compiler comes with a lot more headers and libraries, including fancy stuff like the Windows Aero (DWM) API. The 32-bit compiler (standard MinGW) is more conservative, lacks some shiny features, but more thorougly tested.</p>
+
+<h4>Q: I've passed -m32 to TDM-GCC x64 to compile for 32-bit, but GCC is throwing scary incorrect lib errors at me! Help!</h4>
+<p>A: When compiling for 32-bit, you also need to point the compiler to the 32-bit libraries. By default, the compiler is pointed to the 64-bit ones. To fix this, go to Tools >> Compiler Options. Select your 64-bit install. Then go to Directories >> Libraries. Then double click the path pointing to the 'lib' folder. Edit it to make it point to the lib32 folder next to it (just add '32'). Then click replace. Done!</p>
+
+</body>
+</html>

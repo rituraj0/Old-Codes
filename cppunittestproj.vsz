@@ -1,0 +1,7 @@
+VSWIZARD 7.0
+Wizard=VsWizard.VsWizardEngine.11.0
+Param="WIZARD_NAME = UnitTest"
+Param="RELATIVE_PATH = VCWizards\AppWiz\Generic"
+Param="CONSOLE_TYPE_ONLY = true"
+Param="WIZARD_ID = 86"
+Param="WIZARD_UI = false"

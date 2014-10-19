@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cstdio>
+typedef long long int lg;
+int main()
+{
+
+
+lg test,n,t,sm,k,x;
+
+scanf("%lld%lld",&n,&t);
+
+while(n!=-1 && t!=-1)
+{
+  sm=0;
+  
+ for(k=n;k>=1;k++)
+ { scanf("%lld",&x);
+   sm+=k*x;
+  }
+
+ printf("%lld\n",sm*t);
+
+ scanf("%lld%lld",&n,&t);
+}
+
+return 0;
+}

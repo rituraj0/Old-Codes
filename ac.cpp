@@ -1,0 +1,49 @@
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+int main(){
+            
+        char ar[10000];
+
+            scanf("%s",ar);
+ 
+
+           while(ar[0]!='0')
+           {
+            
+ 
+            int dp[10000]={0};
+            int l=strlen(ar);
+ 
+            if(ar[l-1]!='0')
+            dp[l-1]=1;            
+  
+            for(int j=l-2;j>=0;j--)
+            {
+                int a=ar[j]-'0',b=ar[j+1]-'0';
+                if(j==(l-2)  && (10*a+b)<=26)
+                {
+                if(a!=0)   
+                dp[j]=1+dp[j+1];                
+                }                
+                else if(j==(l-2) && (10*a+b)>26)
+                dp[j]=dp[j+1];
+                else if(j!=(l-2) && (10*a+b)<=26)
+                {
+                    if(a!=0)
+                    dp[j]=dp[j+1]+dp[j+2];
+                }
+                else
+                {                    
+                    dp[j]=dp[j+1];
+                }                
+            }
+
+
+            printf("%d\n",dp[0]);
+           
+            scanf("%s",ar);
+           }
+            return 0;
+       }
+

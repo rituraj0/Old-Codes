@@ -1,0 +1,53 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int  main()
+{
+ 
+int nt[100],ox[100],wt[100],n,on,nn,i,j,k,x;
+int dp[500][500];
+cin>>on>>nn;
+cin>>n;
+
+for(i=0;i<n;i++)
+ cin>>nt[i]>>ox[i]>>wt[i];
+
+for(i=0;i<=on;i++)
+  for(j=0;j<=nn;j++)
+   dp[i][j]=99999;//dp[i][j[ is the minimum number of oxygen demananeded
+
+dp[0][0]=0;
+
+
+/*
+
+ dp[i, j] = min(dp[i, j],                                       <- do not take cylinder k
+                     dp[i - oxygen[k], j - nitrogen[k]] + weight[k]
+*/
+for(k=0;k<n;k++)//k is the conunt of the  number being used
+{
+  for(i=on+21;i>=ox[k];i--)
+    for(j=nn+79;j>=nt[k];j--)
+     { 
+         x=dp[i-ox[k]][j-nt[k]]+wt[k];
+        if(dp[i][j]>x)
+           dp[i][j]=x;
+     }
+
+}
+
+int mn=99999;
+
+for(i=0;i<=23;i++)
+  for(j=0;j<=176;j++)
+     if(i>=on && j>=nn)
+        if(dp[i][j]<mn)
+          mn=dp[i][j];
+
+printf("%d\n",mn);
+
+return 0;
+}     
+       
+    
+

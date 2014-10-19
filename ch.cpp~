@@ -1,0 +1,49 @@
+#include<iostream>
+#include<cstdio>
+int main()
+{
+int n,k;
+scanf("%d%d",&n,&k);
+
+
+if(2*k>n)
+{printf("0\n");
+return 0;
+}
+else if(k==1)
+{
+printf("%d\n",n);
+return 0;
+}
+
+long long int m=1000000003,a[n+1][k+1];
+long long int x=0;
+
+int i,j;
+
+
+
+for(i=0;i<=n;i++)
+ for(j=0;j<=k;j++)
+  a[i][j]=0;
+
+a[1][0]=a[1][1]=1;
+
+for(i=2;i<=n-k+1;i++)
+{
+a[i][0]=a[i][i]=1;
+
+  for(j=1;j<=k;j++)
+  a[i][j]=(a[i-1][j-1]+a[i-1][j] )%m;
+
+}//end for
+
+x=( a[n-k+1][k]-a[n-k-1][k-2] )%m;
+if(x<0)
+x+=1000000003;
+printf("%lld\n",x);
+
+return 0;
+}
+
+

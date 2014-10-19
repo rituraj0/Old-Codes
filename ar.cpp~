@@ -1,0 +1,42 @@
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<cctype>
+#include<cstdlib>
+#include<vector>
+using namespace std;
+int main()
+{
+long long int  test;
+long long int i,sm,k,j,n1,an,l,x;
+
+
+char sv,ch;
+
+scanf("%lld",&test);
+ch=getchar();
+
+while(test--)
+{
+  vector<char> s;
+  while( (ch=getchar())!='\n')
+  s.push_back(ch);
+
+  l=s.size();
+
+  for(i=0;i<l;i++)
+  cout<<s[i];
+
+  cout<<endl;
+ 
+}
+
+return 0;
+}
+
+   
+ 
+  
+
+
+

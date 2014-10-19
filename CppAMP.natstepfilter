@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StepFilter xmlns="http://schemas.microsoft.com/vstudio/debugger/natstepfilter/2010">
+  <Function><Name>Concurrency::index.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::extent.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::_Tiled_index_base.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::tiled_index.*::operator.*</Name><Action>NoStepInto</Action></Function>    
+  <Function><Name>Concurrency::tiled_extent.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::details::_Array_view_shape.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::details::_Array_view_base.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::array_view.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::array.*::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::accelerator::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::accelerator_view::operator.*</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::index.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::extent.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>  
+  <Function><Name>Concurrency::tile_barrier::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::_Tiled_index_base.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::tiled_index.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>    
+  <Function><Name>Concurrency::tiled_extent.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::details::_Array_view_shape.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::details::_Array_view_base.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::array_view.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::array.*::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::accelerator::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::accelerator_view::\{ctor\}</Name><Action>NoStepInto</Action></Function>
+  <Function><Name>Concurrency::tile_barrier::wait</Name><Action>NoStepInto</Action></Function>
+</StepFilter>

@@ -1,0 +1,90 @@
+#include<iostream>
+#include<cstdio>
+typedef long long int lg;
+using namespace std;
+/*
+      W  A   A  M  W
+                 
+      01
+1     02 03  04 05 06
+2     11 10  09 08 07 
+
+*/
+lg rowc(lg l)
+{
+
+ if(l==2 || l==3 || l==4 || l==5 || l==6)
+ return 1;
+
+  return 2;
+}
+
+char side(lg l)
+{
+
+if(l==2 || l==3 || l==10 ||l==11)
+return 'L';
+
+return 'R';
+
+}
+
+
+char post(lg l)
+{
+
+ if(l==5 || l==8)
+ return 'M';
+
+ if(l==3 || l==10 || l==4 || l==9)
+ return 'A';
+
+ return 'W';
+}
+
+int main()
+{
+
+lg n,x,rw,test;
+
+scanf("%lld",&test);
+ 
+while( test--)
+  {
+   scanf("%lld",&n);
+  //cin>>n;
+   if(n==1)
+    {printf("poor conductor\n");
+     continue;
+    }
+
+
+  x=n-1;//ek ke index pe
+  
+  if(x%10==0)
+  ds=x/10-1;
+  else
+  ds=x/10;
+   
+  
+  x=x-ds*10+1;//itni counitng bachi hai
+ 
+  printf("%lld %c %c\n",ds*2+rowc(x),post(x),side(x) );
+  //cout<<<<"  "<<<<"  "<<<<endl;
+
+  }
+
+return 0;
+}
+ 
+
+/*
+    W  A   A  M  W 
+                  
+      01 
+1     02 03  04 05 06 
+2     11 10  09 08 07 
+3     12 13  14 15 16
+4     21 20  19 18 17
+5     22 ............ 
+*/

@@ -1,0 +1,90 @@
+#include<iostream>
+#include<cstdio>
+typedef long long int lg;
+
+bool leap(lg yr)
+{
+  if(yr%100==0 && yr%400!=0)
+  return false;
+
+  if(yr%4==0)
+  return true;
+
+  return false;
+}
+
+lg dm(lg m,lg yr)
+{
+ 
+ switch(m)
+ {
+ case 1: return 31;break;
+ case 2: if(leap(yr)) 
+         return 29;
+         else
+          return 28;break;
+ case 3:return 31;break;
+ case 4:return 30;break;
+ case 5:return 31;break;
+ case 6:return 30;break;
+ case 7:return 31;break;
+ case 8:return 31;break;
+ case 9:return 30;break;
+ case 10:return 31;break;
+ case 11:return 30;break;
+ case 12:return 31;break;
+ }
+
+}
+
+
+void print(lg t)
+{
+  lg x=t%7;
+
+ switch(x)
+ {
+ case 0:printf("Sunday\n");break;
+ case 1:printf("Monday\n");break;
+ case 2:printf("Tuesday\n");break;
+ case 3:printf("Wednesday\n");break;
+ case 4:printf("Thursday\n");break;
+ case 5:printf("Friday\n");break;
+ case 6:printf("Saturday\n");break;
+ }
+}
+
+int main()
+{
+ 
+ lg tt,td,tm,ty,i;
+
+ int test;
+ scanf("%d",&test);
+ 
+while(test--)
+{
+ scanf("%lld%lld%lld",&td,&tm,&ty);
+  tt=0;
+
+ for(i=2012;i<ty;i++)
+   if(leap(i))
+   tt+=366;
+   else
+    tt+=365;
+
+
+
+
+ //ab target yr. ke month ke bare me
+ for(i=1;i<tm;i++)
+  tt=tt+dm(i,ty);
+
+  tt=tt+(td-1);//ab direr date hor diya
+
+   print(tt);
+   
+}
+
+return 0;
+}

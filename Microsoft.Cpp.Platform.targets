@@ -1,0 +1,49 @@
+﻿<!--
+***********************************************************************************************
+Microsoft.Cpp.Platform.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+          created a backup copy.  Incorrect changes to this file will make it
+          impossible to load or build your projects from the command-line or the IDE.
+
+This file defines the steps/targets required to build Visual C++ projects
+specifically on x86 platforms.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+***********************************************************************************************
+-->
+
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ToolsetTargetsFound Condition="Exists('$(VCTargetsPath)\Platforms\$(Platform)\PlatformToolsets\$(PlatformToolset)\Microsoft.Cpp.$(Platform).$(PlatformToolset).targets')">true</ToolsetTargetsFound>
+    <VCTargetsPathEffective Condition="'$(ToolsetTargetsFound)' == 'true'">$(VCTargetsPath)</VCTargetsPathEffective>
+  </PropertyGroup>
+
+  <!-- Import Before -->
+  <Import Condition="Exists('$(VCTargetsPath)\Platforms\$(Platform)\ImportBefore')" Project="$(VCTargetsPath)\Platforms\$(Platform)\ImportBefore\*.targets"/>
+  <!-- Import platform toolset file if found in this version -->
+  <Import Condition="'$(ToolsetTargetsFound)' == 'true'" Project="$(VCTargetsPath)\Platforms\$(Platform)\PlatformToolsets\$(PlatformToolset)\Microsoft.Cpp.$(Platform).$(PlatformToolset).targets" />
+  <!-- Try to find the toolset in older versions  -->
+  <Import Condition="'$(ToolsetTargetsFound)' != 'true' and '$(MinSupportedVCTargetsVersion)' != 'v110'" Project="Microsoft.Cpp.Platform.Redirect.targets" />
+
+  <PropertyGroup>
+    <PrepareForBuildDependsOn>PlatformPrepareForBuild;$(PrepareForBuildDependsOn)</PrepareForBuildDependsOn>
+  </PropertyGroup>
+
+  <Target Name="PlatformPrepareForBuild" DependsOnTargets="$(PlatformPrepareForBuildDependsOn)">
+    <PropertyGroup>
+      <ConfigurationPlatformExists Condition="'%(ProjectConfiguration.Identity)' == '$(Configuration)|$(Platform)'">true</ConfigurationPlatformExists>
+    </PropertyGroup>
+
+    <!-- Error out when building an platform that is not set in the project file -->
+    <VCMessage Code="MSB8013" Type="Error" Arguments="$(Configuration)|$(Platform)" Condition="'$(DesignTimeBuild)'!='true' and '$(ConfigurationPlatformExists)' != 'true'"/>
+  
+    <!-- Check if toolset exists in Visual Studio 2010 or Dev11 -->
+    <VCMessage Code="MSB8020" Type="Error" Arguments="$(_PlatformToolsetShortNameFor_v100);$(PlatformToolset)" Condition="'$(DesignTimeBuild)'!='true' and '$(ToolsetTargetsFound)' != 'true' and '$(PlatformToolset)' == 'v100'" />
+    <VCMessage Code="MSB8020" Type="Error" Arguments="$(_PlatformToolsetShortNameFor_v90);$(PlatformToolset)" Condition="'$(DesignTimeBuild)'!='true' and '$(ToolsetTargetsFound)' != 'true' and '$(PlatformToolset)' == 'v90'" />
+    <VCMessage Code="MSB8020" Type="Error" Arguments="$(PlatformToolset);$(PlatformToolset)" Condition="'$(DesignTimeBuild)'!='true' and '$(ToolsetTargetsFound)' != 'true' and '$(PlatformToolset)' != 'v90' and '$(PlatformToolset)' != 'v100'" />
+  </Target>
+
+  <!-- Import After -->
+  <Import Condition="'$(ToolsetTargetsFound)' == 'true' and Exists('$(VCTargetsPath)\Platforms\$(Platform)\ImportAfter')" Project="$(VCTargetsPath)\Platforms\$(Platform)\ImportAfter\*.targets"/>
+</Project>

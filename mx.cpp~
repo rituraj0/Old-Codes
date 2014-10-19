@@ -1,0 +1,19 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main()
+{
+
+char mx='@',c;
+
+while(10)
+{
+std::cin>>c;
+
+if(c>mx)
+ {mx=c;
+ std::cout<<"Max is   "<<mx<<endl;
+ }
+}
+return 0;
+}
